@@ -94,7 +94,6 @@ contract StudentNFT is ERC721 {
         return _studentInfo[tokenId];
     }
 
-    //funcion para devolver el tokenId 
     function getTokenId() public view returns (uint){
         return retTokenId;
     }

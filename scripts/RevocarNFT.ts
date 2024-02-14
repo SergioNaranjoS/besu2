@@ -6,7 +6,7 @@ async function main() {
   const [deployer] = await ethers.getSigners();
 
   // Dirección del contrato RevocNFTStudent.
-  const revocNFTStudentAddress = "0x7cA5543f9B2C35F0E972f1B45b61A2FE53fF1ed9";
+  const revocNFTStudentAddress = "0xa50a51c09a5c451C52BB714527E1974b686D8e77";
   // TokenId del NFT
   const tokenId: bigint = 1351947349706597035020742220910254269273249441834071231374414548409916295032n; // Reemplaza con el tokenId que deseas verificar
 

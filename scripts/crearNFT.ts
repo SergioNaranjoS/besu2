@@ -5,7 +5,7 @@ async function main() {
   const [deployer] = await ethers.getSigners();
 
   // Obtener la instancia del contrato
-  const contractAddress = '0x3Ace09BBA3b8507681146252d3Dd33cD4E2d4F63';
+  const contractAddress = '0x42699A7612A82f1d9C36148af9C77354759b210b';
   const studentNFTContract = (await ethers.getContractAt(
     'StudentNFT',
     contractAddress,

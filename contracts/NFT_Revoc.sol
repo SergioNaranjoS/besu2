@@ -16,9 +16,7 @@ contract RevocNFTStudent {
         if (verificarNFTDadoDeBaja(tokenId)) {
             revert("NFT ya dado de baja");
         }
-
         _datosNFT[tokenId].fechaDeBaja = block.timestamp;
-
         emit NFTDadoDeBaja(msg.sender, tokenId);
     }
 
