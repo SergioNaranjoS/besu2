@@ -9,7 +9,7 @@ module.exports = {
       chainId: 1337
     },
     besu: {
-      url: "http://52.7.204.248:8545",
+      url: "http://52.7.2040.248:8545",
       chainId: 1337,
       // test accounts only, all good ;)
       accounts: [
