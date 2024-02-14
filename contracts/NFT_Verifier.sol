@@ -3,21 +3,36 @@ pragma solidity ^0.8.0;
 
 // Import libraries
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "./NFT_Student.sol"; // Import the StudentNFT contract;
 
-// Definition of the NFT verification contract
-contract NFTVerifier is Ownable {
-    // Address of the student ERC721 contract
-    StudentNFT private _studentNFTContract;
+// Definicion del verificador
+contract StudentNFTVerifier {
+    StudentNFT private studentNFTContract;
 
-    // Constructor that receives the address of the StudentNFT contract
-    constructor(address studentNFTContractAddress) Ownable(msg.sender) {
-        _studentNFTContract = StudentNFT(studentNFTContractAddress);
+    constructor(address studentNFTAddress) {
+        studentNFTContract = StudentNFT(studentNFTAddress);
     }
 
-    // Function to verify the existence of an NFT
-    function verifyNFT(uint tokenId) external view returns (bool exists) {
-        exists = (_studentNFTContract.ownerOf(tokenId) != address(0));
+    //Funciones que reciben el tokenId de un NFT
+    function validateNFT(uint tokenId) public view returns (bool) {
+        StudentNFT.StudentInfo memory studentInfo = studentNFTContract.getStudentInfo(tokenId);
+        return validateDate(studentInfo.fechaExpiracion);
     }
+
+    function getStudentInfo(uint tokenId) public view returns (StudentNFT.StudentInfo memory) {
+        return studentNFTContract.getStudentInfo(tokenId);
+    }
+
+    function validateDate(uint fechaExpiracion) public view returns (bool) {
+        // Comparar con la fecha actual
+        return fechaExpiracion > block.timestamp;
+    }
+    
+    //Recibir el token id
+    //verificar el token enviaod sea el mismo
+    //verificar el estado del estudiante
+    //Verificar fechas
+
+    //retornar un boolean
+
 }

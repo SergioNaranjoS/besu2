@@ -6,15 +6,21 @@ async function main() {
   console.log('Deploying contracts with the account:', deployer.address);
 
   const Contract = await ethers.getContractFactory('StudentNFT');
-  const contract = await Contract.deploy('identificacion'); // Reemplaza con tu URI base
+  const contract = await Contract.deploy('identificacion');
 
   console.log('Contract address:', contract.target);
 
-   // Deploy NFTVerifier contract
-   const NFTVerifier = await ethers.getContractFactory('NFTVerifier');
+  // Deploy NFTVerifier contract
+   const NFTVerifier = await ethers.getContractFactory('StudentNFTVerifier');
    const nftVerifierContract = await NFTVerifier.deploy(contract.target);
  
    console.log('NFTVerifier contract address:', nftVerifierContract.target);
+
+   //Deploy NFT Valid contract
+   const NFTRevoc = await ethers.getContractFactory('RevocNFTStudent');
+   const nftRevocContract = await NFTRevoc.deploy();
+ 
+   console.log('NFTRevoc contract address:', nftRevocContract.target);
 }
 
 main()
